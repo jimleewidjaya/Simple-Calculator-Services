@@ -5,7 +5,7 @@ from dependencies.getpalindrome import getpalindrome, palindrome
 from celery.result import AsyncResult
 
 
-class prime:
+class calculator_service:
     name = "calculator_service"
 
     @rpc

@@ -4,7 +4,7 @@ prime = Celery('prime', broker='redis://localhost:6379/0',
                   backend='redis://localhost:6379/0')
 
 prime.conf.task_routes = {
-    'getprime.getprime': {'queue': 'prime'}
+    'dependencies.getprime.getprime': {'queue': 'prime'}
 }
 
 @prime.task
@@ -18,10 +18,10 @@ def getprime(index):
         for i in range(2, start):
             if(start % i == 0):
                 prime = False
-            if (prime):
-                if count == index - 1:
-                    target = start
+        if (prime):
+            if count == index - 1:
+                target = start
             count += 1
-        start += 1
+        start +=1
 
     return target

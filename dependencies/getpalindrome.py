@@ -1,10 +1,10 @@
 from celery import Celery
 
-palindrome = Celery('prime', broker='redis://localhost:6379/0',
+palindrome = Celery('palindrome', broker='redis://localhost:6379/0',
                     backend='redis://localhost:6379/0')
 
 palindrome.conf.task_routes = {
-    'Async.getpalindrome.getpalindrome': {'queue': 'palindrome'}
+    'dependencies.getpalindrome.getpalindrome': {'queue': 'palindrome'}
 }
 
 
